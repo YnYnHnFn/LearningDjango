@@ -14,6 +14,11 @@ framework.
 
 For more information, visit
 https://docs.djangoproject.com/en/2.1/howto/deployment/wsgi/
+
+
+プロジェクトを処理する WSGI 互換 Web サーバーのエントリ ポイントです。 
+通常、このファイルは実稼働 Web サーバーのフックを提供するため、現状のままにします。
+
 """
 
 import os

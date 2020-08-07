@@ -8,6 +8,9 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
+
+Web アプリの開発の過程で変更する Django プロジェクトの設定が含まれています。
+
 """
 
 import os
