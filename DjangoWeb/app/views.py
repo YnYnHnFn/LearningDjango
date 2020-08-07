@@ -6,6 +6,12 @@ from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpRequest
 
+
+# 各ビューの関数では単に、テンプレートおよび単純な
+# ディクショナリオブジェクトへのパスを使って、
+# django.shortcuts.render を呼び出しています。 
+
+
 def home(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)

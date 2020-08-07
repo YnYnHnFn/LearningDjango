@@ -10,9 +10,14 @@ from app import forms, views
 
 
 urlpatterns = [
+
     path('', views.home, name='home'),
+
     path('contact/', views.contact, name='contact'),
+
     path('about/', views.about, name='about'),
+
+    #組み込みの Django ビューを使用します。
     path('login/',
          LoginView.as_view
          (
@@ -25,6 +30,9 @@ urlpatterns = [
              }
          ),
          name='login'),
+
+    #組み込みの Django ビューを使用します。
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
+
     path('admin/', admin.site.urls),
 ]
