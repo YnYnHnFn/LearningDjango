@@ -7,24 +7,39 @@
     <div class="col-md-8">
         <section id="loginForm">
             <form action="." method="post" class="form-horizontal">
+
+                <!--質問:<form> 要素に表示される {% csrf_token %} タグの目的は何ですか。
+                    回答:{% csrf_token %} タグには Django の組み込みの
+                    クロスサイト リクエスト フォージェリ (csrf) 保護 (Django docs) が含まれています。
+                    このタグは通常、フォームなどの POST、PUT、または DELETE 要求のメソッドに関連する
+                    任意の要素に追加します。 
+                    その後、テンプレートのレンダリング関数 (render) により、必要な保護が挿入されます。
+                    -->
                 {% csrf_token %}
                 <h4>Use a local account to log in.</h4>
                 <hr />
                 <div class="form-group">
                     <label for="id_username" class="col-md-2 control-label">User name</label>
                     <div class="col-md-10">
+                        <!-- BootstrapAuthenticationForm から CharField フォームを表示します。 -->
                         {{ form.username }}
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="id_password" class="col-md-2 control-label">Password</label>
                     <div class="col-md-10">
+                        <!-- BootstrapAuthenticationForm から CharField フォームを表示します。 -->
                         {{ form.password }}
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
+
                         <input type="hidden" name="next" value="/" />
+                        <!--認証に成功した場合、Django は "next" フィールドにある
+                            相対 URL に移動します。この例では、ホーム ページ (/) になっています。
+                            -->
+
                         <input type="submit" value="Log in" class="btn btn-default" />
                     </div>
                 </div>
