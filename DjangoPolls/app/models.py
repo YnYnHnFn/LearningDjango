@@ -9,6 +9,8 @@ class Poll(models.Model):
     """A poll object for use in the application views and repository."""
     text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
+    author = models.CharField(max_length=100, blank=True)
+
 
     def total_votes(self):
         """Calculates the total number of votes for this poll."""
@@ -32,3 +34,19 @@ class Choice(models.Model):
     def __unicode__(self):
         """Returns a string representation of a choice."""
         return self.text
+
+
+# フィールドの種類をすべて挙げると、
+# CharField (制限ありのテキスト) 
+# TextField (無制限のテキスト)、
+# EmailField、
+# URLField、
+# DateTimeField、
+# IntegerField、
+# DecimalField、
+# BooleanField、
+# ForeignKey、および 
+# ManyToMany があります。
+# https://docs.djangoproject.com/ja/3.1/ref/models/fields/
+
+

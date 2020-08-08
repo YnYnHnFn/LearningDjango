@@ -5,6 +5,7 @@
     <Name>DjangoPolls</Name>
     <RootNamespace>DjangoPolls</RootNamespace>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <TestFramework>Pytest</TestFramework>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -32,6 +33,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="app\migrations\0002_auto_20200808_0442.py" />
     <Compile Include="app\migrations\__init__.py" />
     <Compile Include="app\migrations\0001_initial.py" />
     <Compile Include="app\admin.py" />

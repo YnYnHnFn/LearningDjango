@@ -17,14 +17,18 @@ from app.models import Choice, Poll
 class PollListView(ListView):
     """Renders the home page, with a list of all polls."""
     model = Poll
+    # ビューが使用するモデル (Poll) を特定し、
 
     def get_context_data(self, **kwargs):
+        # get_context_data メソッドをオーバーライドして 
         context = super(PollListView, self).get_context_data(**kwargs)
+
+        # title と year の値をコンテキストに追加する処理が行われています。
         context['title'] = 'Polls'
         context['year'] = datetime.now().year
         return context
 
-class PollDetailView(DetailView):
+class PollDetailView(DetailView):       #DetailView から派生している
     """Renders the poll details page."""
     model = Poll
 
@@ -34,7 +38,7 @@ class PollDetailView(DetailView):
         context['year'] = datetime.now().year
         return context
 
-class PollResultsView(DetailView):
+class PollResultsView(DetailView):      #DetailView から派生している
     """Renders the results page."""
     model = Poll
 
@@ -75,6 +79,7 @@ def vote(request, poll_id):
     poll = get_object_or_404(Poll, pk=poll_id)
     try:
         selected_choice = poll.choice_set.get(pk=request.POST['choice'])
+
     except (KeyError, Choice.DoesNotExist):
         return render(request, 'app/details.html', {
             'title': 'Poll',
@@ -87,9 +92,21 @@ def vote(request, poll_id):
         selected_choice.save()
         return HttpResponseRedirect(reverse('app:results', args=(poll.id,)))
 
+
+
+
+
+
+# app/views.py の seed ビューには samples.json ファイルが読み込まれ、
+# 必要なモデル オブジェクトが作成されます。 
+# Django で、基のデータベース内の一致するレコードが自動的に作成されます。
+# @login_required デコレーターを使用は、ビューの承認レベルを示すことに
+# 注意してください。
+
 @login_required
 def seed(request):
     """Seeds the database with sample polls."""
+
     samples_path = path.join(path.dirname(__file__), 'samples.json')
     with open(samples_path, 'r') as samples_file:
         samples_polls = json.load(samples_file)

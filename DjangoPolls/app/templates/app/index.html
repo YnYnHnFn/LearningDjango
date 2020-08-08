@@ -1,9 +1,16 @@
-{% extends "app/layout.html" %}
+﻿{% extends "app/layout.html" %}
 
 {% block content %}
 
 <h2>Polls.</h2>
 <br/>
+
+<!--このテンプレートは latest_poll_list で Poll オブジェクトのリストを受け取り、
+    そのリストに対して、投票の text 値を使用して各投票のリンクを含む
+    テーブル行を作成する反復処理を実行しています。 
+    % url %} タグの "app:detail" は、引数として poll.id を使用する、
+    "detail" という app/urls.py の URL パターンを指します。
+    -->
 
 {% if latest_poll_list %}
 <table class="table table-hover">

@@ -1,4 +1,4 @@
-{% extends "app/layout.html" %}
+﻿{% extends "app/layout.html" %}
 
 {% block content %}
 
@@ -9,7 +9,12 @@
 <p class="text-danger">{{error_message}}</p>
 {% endif %}
 
+<!--送信時に /vote URL に対して POST が実行される
+    HTML フォーム内に、投票の選択肢が含まれている
+    この URL パターンは app.views.vote にルーティングされます。
+    -->
 <form action="{% url 'app:vote' poll.id %}" method="post">
+
 {% csrf_token %}
 {% for choice in poll.choice_set.all %}
     <div class="radio">
